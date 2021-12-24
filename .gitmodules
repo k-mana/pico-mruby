@@ -1,0 +1,6 @@
+[submodule "lib/pico-sdk"]
+	path = lib/pico-sdk
+	url = https://github.com/raspberrypi/pico-sdk.git
+[submodule "lib/mruby"]
+	path = lib/mruby
+	url = https://github.com/mruby/mruby.git

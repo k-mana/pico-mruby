@@ -1,0 +1,9 @@
+// SPDX-License-Identifier: MIT
+#ifndef PICO_MRUBY_BLOCK_H
+#define PICO_MRUBY_BLOCK_H
+
+#define BLOCK_SIZE (128 * 1024)
+#define BLOCK_SECTOR_SIZE (512)
+#define BLOCK_COUNT (BLOCK_SIZE / BLOCK_SECTOR_SIZE)
+
+#endif

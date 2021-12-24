@@ -1,0 +1,6 @@
+add_subdirectory(hello_world)
+add_subdirectory(pico_mirb)
+add_subdirectory(pico_mruby)
+add_subdirectory(mruby)
+add_subdirectory(fatfs)
+add_subdirectory(mruby-RaspberryPiPico)

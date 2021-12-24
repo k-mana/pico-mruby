@@ -1,0 +1,13 @@
+diff --git a/src/rp2_common/pico_stdio/stdio.c b/src/rp2_common/pico_stdio/stdio.c
+index b457b8a..81efdb3 100644
+--- a/src/rp2_common/pico_stdio/stdio.c
++++ b/src/rp2_common/pico_stdio/stdio.c
+@@ -133,7 +133,7 @@ static int stdio_get_until(char *buf, int len, absolute_time_t until) {
+         }
+         // we sleep here in case the in_chars methods acquire mutexes or disable IRQs and
+         // potentially starve out what they are waiting on (have seen this with USB)
+-        busy_wait_us(1);
++        busy_wait_us(10);
+     } while (!time_reached(until));
+     return PICO_ERROR_TIMEOUT;
+ }
