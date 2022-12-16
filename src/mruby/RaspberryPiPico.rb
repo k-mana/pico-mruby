@@ -6,6 +6,10 @@ MRuby::CrossBuild.new('RaspberryPiPico') do |conf|
     cc.defines << %w(MRB_BYTECODE_DECODE_OPTION)
   end
 
+  conf.archiver do |archiver|
+    archiver.command = "arm-none-eabi-ar"
+  end
+
   conf.gem :core => "mruby-array-ext"
   conf.gem :core => "mruby-catch"
   conf.gem :core => "mruby-class-ext"
