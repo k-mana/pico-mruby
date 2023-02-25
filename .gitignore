@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: Copyright (c) 2023 k-mana
+# SPDX-License-Identifier: MIT
+
+*.lock
+.vscode
+
+# Build directories
+build/
+
+# MacOS
+.DS_Store
