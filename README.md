@@ -13,7 +13,7 @@ $ git submodule update --init --recursive
 
 ## ビルドツールのインストール
 ```
-$ sudo apt install cmake build-essential gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib rake
+$ sudo apt install cmake build-essential gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib python3 rake
 ```
 
 ## ビルド
@@ -24,6 +24,22 @@ $ cd build
 $ cmake ..
 $ cmake --build .
 ```
+
+## dockerでビルド
+* Bash
+```
+$ ./build.sh
+```
+* コマンドプロンプト
+```
+> .\build.bat
+```
+* PowerShell
+```
+> powershell -ExecutionPolicy RemoteSigned .\build.ps1
+```
+ 引数にdockerを渡すとdockerイメージをビルドします。
+
 ### 注記
 pico-sdkのissue[#623](https://github.com/raspberrypi/pico-sdk/issues/623)が発生すると動作しません。
 その場合は、この[パッチ](src/pico-sdk/pico_stdio.patch)を適用してください。
@@ -33,7 +49,7 @@ pico-sdkのissue[#623](https://github.com/raspberrypi/pico-sdk/issues/623)が発
 
 [hello_world](src/hello_world)
 * build/src/hello_world/hello_world.uf2
-* スクリプトまたはバイトコードを埋め込んだサンプル。
+* スクリプトまたはバイトコードを埋め込んだサンプルです。
 
 [pico_mirb](src/pico_mirb)
 - build/src/pico_mirb/pico_mirb.uf2
@@ -41,7 +57,7 @@ pico-sdkのissue[#623](https://github.com/raspberrypi/pico-sdk/issues/623)が発
 
 [pico_mruby](src/pico_mruby)
 * build/src/pico_mruby/pico_mruby.uf2
-* USBマスストレージにcode.rbまたはcode.mrbが存在する場合、自動的に実行する。
+* USBマスストレージにcode.rbまたはcode.mrbが存在する場合は自動的に実行します。
 * 実行する優先順位は以下です。
 	1. code.mrb
 	2. code.rb
@@ -65,7 +81,7 @@ $ git submodule update --init --recursive
 
 ## Install the build tool
 ```
-$ sudo apt install cmake build-essential gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib rake
+$ sudo apt install cmake build-essential gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib python3 rake
 ```
 
 ## Build
@@ -76,6 +92,22 @@ $ cd build
 $ cmake ..
 $ cmake --build .
 ```
+
+## Build with docker
+* Bash
+```
+$ ./build.sh
+```
+* Command prompt
+```
+> .\build.bat
+```
+* PowerShell
+```
+> powershell -ExecutionPolicy RemoteSigned .\build.ps1
+```
+ Passing docker as an agrgument will build a docker iamge.
+
 ### Note
 It does not work when issue [#623](https://github.com/raspberrypi/pico-sdk/issues/623) of pico-sdk occurs.
 In that case, please apply this [patch](src/pico-sdk/pico_stdio.patch).
