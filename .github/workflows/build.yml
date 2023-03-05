@@ -1,0 +1,34 @@
+name: Build
+
+on: 
+  push:
+    branches:
+      - main
+    tags-ignore:
+      - '**'
+  pull_request:
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag pico-mruby-dev
+
+      - name: Build pico-mruby
+        run: docker run --mount type=bind,source="$(pwd)"/,target=/work pico-mruby-dev /bin/bash -c "cmake -G Ninja -B build && cmake --build build"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ github.event.repository.name }}-binary
+          path: |
+            build/src/hello_world/hello_world.uf2
+            build/src/pico_mirb/pico-mirb.uf2
+            build/src/pico_mruby/pico-mruby.uf2
