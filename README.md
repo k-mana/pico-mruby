@@ -1,5 +1,7 @@
 # Raspberry Pi Pico用のmruby
 
+![example workflow](https://github.com/k-mana/pico-mruby/actions/workflows/build.yml/badge.svg)
+
 ## ソースコードの取得
 ```
 $ git clone https://github.com/k-mana/pico-mruby.git --recursive
