@@ -42,10 +42,6 @@ $ ./build.sh
 ```
  引数にdockerを渡すとdockerイメージをビルドします。
 
-### 注記
-pico-sdkのissue[#623](https://github.com/raspberrypi/pico-sdk/issues/623)が発生すると動作しません。
-その場合は、この[パッチ](src/pico-sdk/pico_stdio.patch)を適用してください。
-
 ## アプリケーション
 デフォルトはUSBシリアル
 
@@ -109,10 +105,6 @@ $ ./build.sh
 > powershell -ExecutionPolicy RemoteSigned .\build.ps1
 ```
  Passing docker as an agrgument will build a docker iamge.
-
-### Note
-It does not work when issue [#623](https://github.com/raspberrypi/pico-sdk/issues/623) of pico-sdk occurs.
-In that case, please apply this [patch](src/pico-sdk/pico_stdio.patch).
 
 ## Application
 Default is USB Serial.
