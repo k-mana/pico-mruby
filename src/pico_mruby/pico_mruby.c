@@ -20,6 +20,7 @@
 #include "mruby/variable.h"
 #include "mruby/opcode.h"
 #include "mruby/presym.h"
+#include "mruby/error.h"
 #include "mruby/version.h"
 
 #include "ff.h"
@@ -75,7 +76,7 @@ is_code_block_open(struct mrb_parser_state *parser)
 
   /* check if parser error are available */
   if (0 < parser->nerr) {
-    const char unexpected_end[] = "syntax error, unexpected $end";
+    const char unexpected_end[] = "syntax error, unexpected end of file";
     const char *message = parser->error_buffer[0].message;
 
     /* a parser error occur, we have to check if */
@@ -179,10 +180,6 @@ print_cmdline(int code_block_open)
   }
   fflush(NULL);
 }
-
-#ifdef MRB_MIRB_VERBOSE
-void mrb_codedump_all(mrb_state*, struct RProc*);
-#endif
 
 static int
 check_keyword(const char *buf, const char *word)
@@ -374,6 +371,7 @@ RunMIRB()
         stack_keep = proc->body.irep->nlocals;
         /* did an exception occur? */
         if (mrb->exc) {
+          MRB_EXC_CHECK_EXIT(mrb, mrb->exc);
           p(mrb, mrb_obj_value(mrb->exc), 0);
           mrb->exc = 0;
         }
